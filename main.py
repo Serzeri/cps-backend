@@ -27,7 +27,7 @@ def submit_score(score: Score):
         with open(DATA_FILE, "r") as f:
             scores = json.load(f)
 
-    scores.append(score.dict())
+    scores.append(score.model_dump())  # ← use this instead of .dict()
 
     with open(DATA_FILE, "w") as f:
         json.dump(scores, f)
